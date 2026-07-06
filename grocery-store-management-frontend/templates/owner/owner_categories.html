@@ -1,0 +1,59 @@
+{% extends "owner/owner_base.html" %}
+
+{% block title %}
+Categories
+{% endblock %}
+
+{% block content %}
+
+<h1>Categories</h1>
+
+<a href="#" class="btn">
+    + Add Category
+</a>
+
+<table>
+
+    <thead>
+
+        <tr>
+
+            <th>ID</th>
+
+            <th>Category Name</th>
+
+            <th>Actions</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% for category in categories %}
+
+        <tr>
+
+            <td>{{ category.id }}</td>
+
+            <td>{{ category.name }}</td>
+
+            <td>
+
+                <a href="#">Edit</a>
+
+                |
+
+                <a href="#">Delete</a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

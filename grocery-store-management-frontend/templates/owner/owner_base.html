@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Owner Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <a href="{{ url_for('owner.owner_dashboard') }}">Dashboard</a>
+
+    <a href="{{ url_for('categories.owner_categories') }}">
+        Categories
+    </a>
+
+    <a href="{{ url_for('products.product_list') }}">
+        Products
+    </a>
+
+    <a href="#">
+        Customers
+    </a>
+
+    <a href="#">
+        Orders
+    </a>
+
+    <a href="#">
+        Settings
+    </a>
+
+    <a href="{{ url_for('auth.logout') }}">
+        Logout
+    </a>
+
+</div>
+
+<div class="content">
+
+{% block content %}
+
+{% endblock %}
+
+</div>
+
+</body>
+
+</html>
