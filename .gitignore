@@ -4,14 +4,20 @@
 *$py.class
 
 # Virtual Environments
-grocery-store-management-backend/venv/
+venv/
 .venv/
+env/
+ENV/
 
 # Database
-grocery-store-management-backend/database/*.db
+*.db
 
-# VS Code
+# Environment Variables
+.env
+
+# IDE
 .vscode/
+.idea/
 
 # Operating System
 .DS_Store
@@ -20,5 +26,5 @@ Thumbs.db
 # Logs
 *.log
 
-# Temporary files
+# Temporary Files
 *.tmp
