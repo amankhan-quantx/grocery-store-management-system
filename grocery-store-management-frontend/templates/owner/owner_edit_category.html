@@ -1,0 +1,38 @@
+{% extends "owner/owner_base.html" %}
+
+{% block title %}
+Edit Category
+{% endblock %}
+
+{% block content %}
+
+<h1>Edit Category</h1>
+
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+
+    <label>Category Name</label>
+
+    <input
+        type="text"
+        name="name"
+        value="{{ category.name }}"
+        required
+    >
+
+    <button type="submit">
+        Update Category
+    </button>
+
+</form>
+
+<br>
+
+<a href="{{ url_for('categories.owner_categories') }}">
+    ← Back to Categories
+</a>
+
+{% endblock %}

@@ -45,3 +45,55 @@ def owner_add_category():
             )
 
     return render_template("owner/owner_add_category.html")
+
+@categories.route("/owner/categories/delete/<int:category_id>")
+def owner_delete_category(category_id):
+
+    if "user" not in session:
+        return redirect(url_for("auth.owner_login"))
+
+    try:
+
+        CategoryService.delete_category(category_id)
+
+    except ValueError:
+        pass
+
+    return redirect(url_for("categories.owner_categories"))
+
+@categories.route("/owner/categories/edit/<int:category_id>", methods=["GET", "POST"])
+def owner_edit_category(category_id):
+
+    if "user" not in session:
+        return redirect(url_for("auth.owner_login"))
+
+    category = CategoryService.get_category(category_id)
+
+    if not category:
+        return redirect(url_for("categories.owner_categories"))
+
+    if request.method == "POST":
+
+        try:
+
+            CategoryService.update_category(
+                category_id,
+                request.form["name"]
+            )
+
+            return redirect(
+                url_for("categories.owner_categories")
+            )
+
+        except ValueError as error:
+
+            return render_template(
+                "owner/owner_edit_category.html",
+                category=category,
+                error=str(error)
+            )
+
+    return render_template(
+        "owner/owner_edit_category.html",
+        category=category
+    )

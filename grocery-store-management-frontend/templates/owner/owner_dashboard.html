@@ -6,8 +6,26 @@ Owner Dashboard
 
 {% block content %}
 
-<h1>Dashboard</h1>
+<h1>Owner Dashboard</h1>
 
-<p>Welcome to the Grocery Store Management System.</p>
+<hr>
+
+<h3>Quick Actions</h3>
+
+<ul>
+
+    <li>
+        <a href="{{ url_for('categories.owner_categories') }}">
+            Manage Categories
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ url_for('products.product_list') }}">
+            Manage Products
+        </a>
+    </li>
+
+</ul>
 
 {% endblock %}

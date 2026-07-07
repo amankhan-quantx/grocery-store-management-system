@@ -4,7 +4,8 @@ from flask import Flask, session, redirect, url_for
 from config import Config
 from routes.auth import auth
 from routes.products import products
-from routes.owner_routes import owner
+from routes.owner import owner
+from routes.category_routes import categories
 
 BASE_DIR = os.path.dirname(__file__)
 
@@ -26,13 +27,14 @@ app.config.from_object(Config)
 app.register_blueprint(auth)
 app.register_blueprint(products)
 app.register_blueprint(owner)
+app.register_blueprint(categories)
 
 
 @app.route("/")
 def home():
 
     if "user" not in session:
-        return redirect(url_for("auth.login"))
+        return redirect(url_for("auth.owner_login"))
 
     return redirect(url_for("owner.owner_dashboard"))
 

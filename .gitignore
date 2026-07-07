@@ -1,0 +1,24 @@
+# Python
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+grocery-store-management-backend/venv/
+.venv/
+
+# Database
+grocery-store-management-backend/database/*.db
+
+# VS Code
+.vscode/
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp

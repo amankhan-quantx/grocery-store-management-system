@@ -72,4 +72,39 @@ class Category:
 
         return category
     
+    @staticmethod
+    def delete(category_id):
+
+        conn = get_db_connection()
+
+        conn.execute(
+            """
+            DELETE FROM categories
+            WHERE id = ?
+            """,
+            (category_id,)
+        )
+
+        conn.commit()
+
+        conn.close()
+
+    @staticmethod
+    def update(category_id, name):
+
+        conn = get_db_connection()
+
+        conn.execute(
+            """
+            UPDATE categories
+            SET name = ?
+            WHERE id = ?
+            """,
+            (name, category_id)
+        )
+
+        conn.commit()
+
+        conn.close()
+    
     
