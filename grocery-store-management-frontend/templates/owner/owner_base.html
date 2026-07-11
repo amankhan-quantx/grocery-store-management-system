@@ -3,52 +3,81 @@
 
 <head>
 
-    <title>Owner Dashboard</title>
+    <meta charset="UTF-8">
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='css/style.css') }}">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
 
 </head>
 
 <body>
 
-<div class="sidebar">
+<div class="sidebar" id="sidebar">
 
-    <a href="{{ url_for('owner.owner_dashboard') }}">Dashboard</a>
+    <button id="toggle-btn" onclick="toggleSidebar()">
+        ☰
+    </button>
+
+    <h2 class="logo">
+        🛒 Grocery Store
+    </h2>
+
+    <hr>
+
+    <a href="{{ url_for('owner.owner_dashboard') }}">
+        🏠 <span>Dashboard</span>
+    </a>
 
     <a href="{{ url_for('categories.owner_categories') }}">
-        Categories
+        📂 <span>Categories</span>
     </a>
 
     <a href="{{ url_for('products.product_list') }}">
-        Products
+        📦 <span>Products</span>
     </a>
 
     <a href="#">
-        Customers
+        👥 <span>Customers</span>
     </a>
 
     <a href="#">
-        Orders
+        🛒 <span>Orders</span>
     </a>
 
     <a href="#">
-        Settings
+        ⚙ <span>Settings</span>
     </a>
+
+    <hr>
 
     <a href="{{ url_for('auth.logout') }}">
-        Logout
+        🚪 <span>Logout</span>
     </a>
 
 </div>
 
-<div class="content">
+<div class="content" id="content">
 
 {% block content %}
-
 {% endblock %}
 
 </div>
+
+<script>
+
+function toggleSidebar() {
+
+    document.getElementById("sidebar").classList.toggle("collapsed");
+
+    document.getElementById("content").classList.toggle("expanded");
+
+}
+
+</script>
 
 </body>
 

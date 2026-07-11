@@ -8,24 +8,48 @@ Owner Dashboard
 
 <h1>Owner Dashboard</h1>
 
-<hr>
+<h3>Welcome back! Here's your inventory overview.</h3>
 
-<h3>Quick Actions</h3>
+<div class="dashboard-cards">
 
-<ul>
+    <div class="card">
+        <p>📦 Total Products</p>
+        <h2>{{ total_products }}</h2>
+    </div>
 
-    <li>
-        <a href="{{ url_for('categories.owner_categories') }}">
-            Manage Categories
-        </a>
-    </li>
+    <div class="card">
+        <p>📂 Total Categories</p>
+        <h2>{{ total_categories }}</h2>
+    </div>
 
-    <li>
-        <a href="{{ url_for('products.product_list') }}">
-            Manage Products
-        </a>
-    </li>
+    <div class="card">
+        <p>🟡 Low Stock</p>
+        <h2>{{ low_stock }}</h2>
+    </div>
 
-</ul>
+    <div class="card">
+        <p>🔴 Out of Stock</p>
+        <h2>{{ out_of_stock }}</h2>
+    </div>
+
+</div>
+
+<h2>Quick Actions</h2>
+
+<p>
+
+    <a href="{{ url_for('categories.owner_categories') }}">
+        ➕ Manage Categories
+    </a>
+
+</p>
+
+<p>
+
+    <a href="{{ url_for('products.product_list') }}">
+        📦 Manage Products
+    </a>
+
+</p>
 
 {% endblock %}
