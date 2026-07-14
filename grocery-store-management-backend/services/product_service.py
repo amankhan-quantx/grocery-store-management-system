@@ -4,14 +4,55 @@ from models.product import Product
 class ProductService:
 
     @staticmethod
-    def get_products():
+    def get_products(
+        page=1,
+        per_page=10,
+        sort_by="id",
+        order="DESC"
+    ):
 
-        return Product.get_all()
+        return Product.get_all(
+            page,
+            per_page,
+            sort_by,
+            order
+        )
 
     @staticmethod
     def get_product(product_id):
 
         return Product.get_by_id(product_id)
+    
+    @staticmethod
+    def get_total_products():
+
+        return Product.get_total_count()
+    
+    @staticmethod
+    def get_low_stock():
+
+        return Product.get_low_stock()
+
+    @staticmethod
+    def get_out_of_stock():
+
+        return Product.get_out_of_stock()
+    
+    @staticmethod
+    def get_recent_products():
+
+        return Product.get_recent_products()
+    
+    @staticmethod
+    def get_expired_products():
+
+        return Product.get_expired_products()
+
+
+    @staticmethod
+    def get_expiring_soon_products():
+
+        return Product.get_expiring_soon_products()
 
     @staticmethod
     def create_product(

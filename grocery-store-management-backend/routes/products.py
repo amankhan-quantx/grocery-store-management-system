@@ -27,10 +27,30 @@ def product_list():
 
     keyword = request.args.get("search", "").strip()
 
+    page = request.args.get("page", 1, type=int)
+
+    per_page = 10
+
+    sort_by = request.args.get("sort_by", "id")
+
+    order = request.args.get("order", "DESC")
+
+    total_products = ProductService.get_total_products()
+    
+    total_pages = (total_products + per_page - 1) // per_page
+
     if keyword:
+
         product_list = ProductService.search_products(keyword)
+
     else:
-        product_list = ProductService.get_products()
+
+        product_list = ProductService.get_products(
+            page,
+            per_page,
+            sort_by,
+            order 
+        )
 
     today = datetime.today().date()
 
@@ -68,9 +88,13 @@ def product_list():
     return render_template(
         "owner/owner_products.html",
         products=products_data,
-        search=keyword
+        search=keyword,
+        page=page,
+        per_page=per_page,
+        total_pages=total_pages,
+        sort_by=sort_by,
+        order=order
     )
-
 
 @products.route("/owner/products/add", methods=["GET", "POST"])
 def add_product():

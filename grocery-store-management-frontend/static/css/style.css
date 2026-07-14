@@ -1,3 +1,7 @@
+/* ==========================================================
+   BODY
+========================================================== */
+
 body {
 
     margin: 0;
@@ -8,7 +12,10 @@ body {
 
 }
 
-/* Sidebar */
+
+/* ==========================================================
+   SIDEBAR
+========================================================== */
 
 .sidebar {
 
@@ -62,7 +69,10 @@ body {
 
 }
 
-/* Content */
+
+/* ==========================================================
+   CONTENT
+========================================================== */
 
 .content {
 
@@ -72,7 +82,22 @@ body {
 
 }
 
-/* Tables */
+.content {
+
+    transition: 0.3s;
+
+}
+
+.content.expanded {
+
+    margin-left: 100px;
+
+}
+
+
+/* ==========================================================
+   TABLES
+========================================================== */
 
 table {
 
@@ -115,7 +140,10 @@ table tr:hover {
 
 }
 
-/* Buttons */
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
 
 button {
 
@@ -139,7 +167,10 @@ button:hover {
 
 }
 
-/* Links */
+
+/* ==========================================================
+   LINKS
+========================================================== */
 
 a {
 
@@ -155,7 +186,10 @@ a:hover {
 
 }
 
-/* Inputs */
+
+/* ==========================================================
+   FORMS
+========================================================== */
 
 input,
 select,
@@ -177,7 +211,10 @@ textarea {
 
 }
 
-/* Dashboard Cards */
+
+/* ==========================================================
+   DASHBOARD
+========================================================== */
 
 .dashboard-cards {
 
@@ -223,7 +260,10 @@ textarea {
 
 }
 
-/* Images */
+
+/* ==========================================================
+   IMAGES
+========================================================== */
 
 img {
 
@@ -231,62 +271,165 @@ img {
 
 }
 
-/* Toggle Button */
 
-#toggle-btn{
+/* ==========================================================
+   TOGGLE BUTTON
+========================================================== */
 
-    width:40px;
+#toggle-btn {
 
-    height:40px;
+    width: 40px;
 
-    margin:15px;
+    height: 40px;
 
-    border:none;
+    margin: 15px;
 
-    cursor:pointer;
+    border: none;
 
-    border-radius:5px;
+    cursor: pointer;
 
-}
-
-/* Sidebar Collapse */
-
-.sidebar{
-
-    transition:0.3s;
-
-    overflow:hidden;
+    border-radius: 5px;
 
 }
 
-.sidebar.collapsed{
 
-    width:80px;
+/* ==========================================================
+   SIDEBAR COLLAPSE
+========================================================== */
 
-}
+.sidebar {
 
-.sidebar.collapsed span{
+    transition: 0.3s;
 
-    display:none;
-
-}
-
-.sidebar.collapsed .logo{
-
-    display:none;
+    overflow: hidden;
 
 }
 
-/* Content */
+.sidebar.collapsed {
 
-.content{
-
-    transition:0.3s;
+    width: 80px;
 
 }
 
-.content.expanded{
+.sidebar.collapsed span {
 
-    margin-left:100px;
+    display: none;
+
+}
+
+.sidebar.collapsed .logo {
+
+    display: none;
+
+}
+
+
+/* ==========================================================
+   LOGIN PAGE
+========================================================== */
+
+.login-container {
+
+    width: 420px;
+
+    margin: 80px auto;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,.15);
+
+}
+
+.login-container h1 {
+
+    text-align: center;
+
+    color: #2c3e50;
+
+    margin-bottom: 10px;
+
+}
+
+.login-container h2 {
+
+    text-align: center;
+
+    color: #666;
+
+    margin-bottom: 30px;
+
+}
+
+.login-container label {
+
+    display: block;
+
+    font-weight: bold;
+
+    margin-bottom: 8px;
+
+}
+
+.login-container input {
+
+    width: 100%;
+
+    padding: 12px;
+
+    margin-bottom: 20px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+
+    box-sizing: border-box;
+
+    font-size: 15px;
+
+}
+
+.login-container button {
+
+    width: 100%;
+
+    padding: 12px;
+
+    background: #3498db;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 6px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+}
+
+.login-container button:hover {
+
+    background: #2980b9;
+
+}
+
+.error {
+
+    background: #ffe6e6;
+
+    color: #c0392b;
+
+    padding: 10px;
+
+    border-radius: 6px;
+
+    margin-bottom: 20px;
+
+    text-align: center;
 
 }

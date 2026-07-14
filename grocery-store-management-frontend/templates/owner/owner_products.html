@@ -23,6 +23,38 @@ Products
         value="{{ search }}"
     >
 
+    <select name="sort_by">
+
+        <option value="id" {% if sort_by=="id" %}selected{% endif %}>
+            Newest
+        </option>
+
+        <option value="name" {% if sort_by=="name" %}selected{% endif %}>
+            Name
+        </option>
+
+        <option value="price" {% if sort_by=="price" %}selected{% endif %}>
+            Price
+        </option>
+
+        <option value="quantity" {% if sort_by=="quantity" %}selected{% endif %}>
+            Quantity
+        </option>
+
+    </select>
+
+    <select name="order">
+
+        <option value="ASC" {% if order=="ASC" %}selected{% endif %}>
+            Ascending
+        </option>
+
+        <option value="DESC" {% if order=="DESC" %}selected{% endif %}>
+            Descending
+        </option>
+
+    </select>
+
     <button type="submit">
         Search
     </button>
@@ -176,5 +208,66 @@ Products
     {% endfor %}
 
 </table>
+
+<br><br>
+
+<div style="text-align:center; margin-top:30px;">
+
+    {% if page > 1 %}
+
+        <a
+            href="{{ url_for('products.product_list', page=page-1, search=search) }}"
+        >
+            ⬅ Previous
+        </a>
+
+    {% endif %}
+
+    {% for p in range(1, total_pages + 1) %}
+
+        {% if p == page %}
+
+            <strong
+                style="
+                    padding:10px 15px;
+                    background:#3498db;
+                    color:white;
+                    border-radius:5px;
+                    margin:0 3px;
+                "
+            >
+                {{ p }}
+            </strong>
+
+        {% else %}
+
+            <a
+                href="{{ url_for('products.product_list', page=p, search=search) }}"
+                style="
+                    padding:10px 15px;
+                    text-decoration:none;
+                    border:1px solid #ccc;
+                    border-radius:5px;
+                    margin:0 3px;
+                "
+            >
+                {{ p }}
+            </a>
+
+        {% endif %}
+
+    {% endfor %}
+
+    {% if page < total_pages %}
+
+        <a
+            href="{{ url_for('products.product_list', page=page+1, search=search) }}"
+        >
+            Next ➡
+        </a>
+
+    {% endif %}
+
+</div>
 
 {% endblock %}

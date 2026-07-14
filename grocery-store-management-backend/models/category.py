@@ -8,103 +8,126 @@ class Category:
 
         conn = get_db_connection()
 
-        categories = conn.execute(
-            """
-            SELECT *
-            FROM categories
-            ORDER BY name
-            """
-        ).fetchall()
+        try:
 
-        conn.close()
+            categories = conn.execute(
+                """
+                SELECT *
+                FROM categories
+                ORDER BY name
+                """
+            ).fetchall()
 
-        return categories
+            return categories
+
+        finally:
+
+            conn.close()
 
     @staticmethod
     def create(name):
 
         conn = get_db_connection()
 
-        conn.execute(
-            """
-            INSERT INTO categories(name)
-            VALUES (?)
-            """,
-            (name,)
-        )
+        try:
 
-        conn.commit()
-        conn.close()
+            conn.execute(
+                """
+                INSERT INTO categories(name)
+                VALUES (?)
+                """,
+                (name,)
+            )
+
+            conn.commit()
+
+        finally:
+
+            conn.close()
 
     @staticmethod
     def get_by_id(category_id):
 
         conn = get_db_connection()
 
-        category = conn.execute(
-            """
-            SELECT *
-            FROM categories
-            WHERE id = ?
-            """,
-            (category_id,)
-        ).fetchone()
+        try:
 
-        conn.close()
+            category = conn.execute(
+                """
+                SELECT *
+                FROM categories
+                WHERE id = ?
+                """,
+                (category_id,)
+            ).fetchone()
 
-        return category
-    
+            return category
+
+        finally:
+
+            conn.close()
+
     @staticmethod
     def get_by_name(name):
 
         conn = get_db_connection()
 
-        category = conn.execute(
-            """
-            SELECT *
-            FROM categories
-            WHERE LOWER(name) = LOWER(?)
-            """,
-            (name,)
-        ).fetchone()
+        try:
 
-        conn.close()
+            category = conn.execute(
+                """
+                SELECT *
+                FROM categories
+                WHERE LOWER(name) = LOWER(?)
+                """,
+                (name,)
+            ).fetchone()
 
-        return category
-    
-    @staticmethod
-    def delete(category_id):
+            return category
 
-        conn = get_db_connection()
+        finally:
 
-        conn.execute(
-            """
-            DELETE FROM categories
-            WHERE id = ?
-            """,
-            (category_id,)
-        )
-
-        conn.commit()
-
-        conn.close()
+            conn.close()
 
     @staticmethod
     def update(category_id, name):
 
         conn = get_db_connection()
 
-        conn.execute(
-            """
-            UPDATE categories
-            SET name = ?
-            WHERE id = ?
-            """,
-            (name, category_id)
-        )
+        try:
 
-        conn.commit()
+            conn.execute(
+                """
+                UPDATE categories
+                SET name = ?
+                WHERE id = ?
+                """,
+                (name, category_id)
+            )
 
-        conn.close()
-    
-    
+            conn.commit()
+
+        finally:
+
+            conn.close()
+
+    @staticmethod
+    def delete(category_id):
+
+        conn = get_db_connection()
+
+        try:
+
+            conn.execute(
+                """
+                DELETE FROM categories
+                WHERE id = ?
+                """,
+                (category_id,)
+            )
+
+            conn.commit()
+
+        finally:
+
+            conn.close()

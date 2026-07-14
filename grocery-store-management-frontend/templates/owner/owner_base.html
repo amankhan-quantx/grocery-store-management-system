@@ -18,7 +18,7 @@
 
 <div class="sidebar" id="sidebar">
 
-    <button id="toggle-btn" onclick="toggleSidebar()">
+    <button id="toggle-btn" type="button" onclick="toggleSidebar()">
         ☰
     </button>
 
@@ -69,13 +69,33 @@
 
 <script>
 
-function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    const content = document.getElementById("content");
 
-    document.getElementById("sidebar").classList.toggle("collapsed");
+    // Restore saved state
+    if (localStorage.getItem("sidebar") === "collapsed") {
 
-    document.getElementById("content").classList.toggle("expanded");
+        sidebar.classList.add("collapsed");
+        content.classList.add("expanded");
 
-}
+    }
+
+    function toggleSidebar() {
+
+        sidebar.classList.toggle("collapsed");
+        content.classList.toggle("expanded");
+
+        if (sidebar.classList.contains("collapsed")) {
+
+            localStorage.setItem("sidebar", "collapsed");
+
+        } else {
+
+            localStorage.setItem("sidebar", "expanded");
+
+        }
+
+    }
 
 </script>
 

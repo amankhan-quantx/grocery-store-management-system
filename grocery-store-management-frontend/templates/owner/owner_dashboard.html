@@ -8,31 +8,228 @@ Owner Dashboard
 
 <h1>Owner Dashboard</h1>
 
-<h3>Welcome back! Here's your inventory overview.</h3>
+<hr>
 
 <div class="dashboard-cards">
 
     <div class="card">
-        <p>📦 Total Products</p>
-        <h2>{{ total_products }}</h2>
+        <h3>📦 Products</h3>
+        <h1>{{ total_products }}</h1>
     </div>
 
     <div class="card">
-        <p>📂 Total Categories</p>
-        <h2>{{ total_categories }}</h2>
+        <h3>📂 Categories</h3>
+        <h1>{{ total_categories }}</h1>
     </div>
 
     <div class="card">
-        <p>🟡 Low Stock</p>
-        <h2>{{ low_stock }}</h2>
+        <h3>🟡 Low Stock</h3>
+        <h1>{{ low_stock }}</h1>
     </div>
 
     <div class="card">
-        <p>🔴 Out of Stock</p>
-        <h2>{{ out_of_stock }}</h2>
+        <h3>🔴 Out of Stock</h3>
+        <h1>{{ out_of_stock }}</h1>
     </div>
 
 </div>
+
+<hr>
+
+<h2>⚠ Inventory Alerts</h2>
+
+<div class="dashboard-cards">
+
+    <div class="card">
+
+        <h3>🟡 Low Stock Products</h3>
+
+        {% if low_stock_products %}
+
+        <table>
+
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+            </tr>
+
+            {% for product in low_stock_products %}
+
+            <tr>
+
+                <td>{{ product.name }}</td>
+
+                <td>{{ product.quantity }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+
+        <p>✅ No low stock products.</p>
+
+        {% endif %}
+
+    </div>
+
+    <div class="card">
+
+        <h3>🔴 Out of Stock Products</h3>
+
+        {% if out_of_stock_products %}
+
+        <table>
+
+            <tr>
+                <th>Product</th>
+            </tr>
+
+            {% for product in out_of_stock_products %}
+
+            <tr>
+
+                <td>{{ product.name }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+
+        <p>✅ No out of stock products.</p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+<hr>
+
+<h2>📦 Recently Added Products</h2>
+
+{% if recent_products %}
+
+<table>
+
+    <tr>
+
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+
+    </tr>
+
+    {% for product in recent_products %}
+
+    <tr>
+
+        <td>{{ product.name }}</td>
+
+        <td>{{ product.category_name }}</td>
+
+        <td>₹ {{ product.price }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% else %}
+
+<p>📭 No products have been added yet.</p>
+
+{% endif %}
+
+<hr>
+
+<h2>⏰ Expiry Alerts</h2>
+
+<div class="dashboard-cards">
+
+    <div class="card">
+
+        <h3>🔴 Expired Products</h3>
+
+        {% if expired_products %}
+
+        <table>
+
+            <tr>
+
+                <th>Product</th>
+                <th>Expiry Date</th>
+
+            </tr>
+
+            {% for product in expired_products %}
+
+            <tr>
+
+                <td>{{ product.name }}</td>
+
+                <td>{{ product.expiry_date }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+
+        <p>✅ No expired products.</p>
+
+        {% endif %}
+
+    </div>
+
+    <div class="card">
+
+        <h3>🟡 Expiring Soon</h3>
+
+        {% if expiring_soon_products %}
+
+        <table>
+
+            <tr>
+
+                <th>Product</th>
+                <th>Expiry Date</th>
+
+            </tr>
+
+            {% for product in expiring_soon_products %}
+
+            <tr>
+
+                <td>{{ product.name }}</td>
+
+                <td>{{ product.expiry_date }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+
+        <p>✅ No products expiring soon.</p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+<hr>
 
 <h2>Quick Actions</h2>
 
